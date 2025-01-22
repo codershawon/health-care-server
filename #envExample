@@ -1,0 +1,12 @@
+# Database Configuration
+DATABASE_HOST="108.181.202.123"
+DATABASE_USER="mtsampledatabase_students"
+DATABASE_PASSWORD="iOttcEp++wnO"
+DATABASE_NAME="mtsampledatabase_students"
+
+# Prisma Database URL
+DATABASE_URL="mysql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}"
+
+# Prisma Shadow Database Configuration (Optional but Recommended for Migrations)
+SHADOW_DATABASE_NAME="mtsampledatabase_shadow"
+SHADOW_DATABASE_URL="mysql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${SHADOW_DATABASE_NAME}"
