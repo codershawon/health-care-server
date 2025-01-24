@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `users` MODIFY `status` ENUM('ACTIVE', 'BLOCKED', 'DELETED') NOT NULL DEFAULT 'ACTIVE';

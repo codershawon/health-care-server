@@ -11,11 +11,19 @@ const createAdmin =async(req: Request, res: Response)=>{
         data: result
     })
     }catch(err){
-        res.status(500).json({
-            success: false,
-            message: err.name || "Something went wrong",
-            error: err
-        });
+        if (err instanceof Error) {
+            res.status(500).json({
+                success: false,
+                message: err.name || "Something went wrong",
+                error: err.message
+            });
+        } else {
+            res.status(500).json({
+                success: false,
+                message: "Something went wrong",
+                error: err
+            });
+        }
     }
 }
 export const userController={

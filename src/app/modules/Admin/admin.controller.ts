@@ -62,8 +62,47 @@ const updateIntoDB = async(req:Request, res: Response) => {
     }
 }
 
+const deleteFromDB = async(req:Request, res: Response) => {
+    const {id} = req.params
+    console.log("data", req.body);
+     try{
+        const result = await adminService.deleteFromDB(id);
+        res.status(200).json({
+            success: true,
+            message:"Data deleted successfully",
+            data: result
+        })
+     }catch(err){
+        res.status(500).json({
+            success: false,
+            message: (err instanceof Error ? err.name : "Something went wrong"),
+            error: err
+        });
+    }
+}
+const softDeleteFromDB = async(req:Request, res: Response) => {
+    const {id} = req.params
+    console.log("data", req.body);
+     try{
+        const result = await adminService.softDeleteFromDB(id);
+        res.status(200).json({
+            success: true,
+            message:"Soft data deleted successfully",
+            data: result
+        })
+     }catch(err){
+        res.status(500).json({
+            success: false,
+            message: (err instanceof Error ? err.name : "Something went wrong"),
+            error: err
+        });
+    }
+}
+
 export const adminController={
     getAllFromDB,
     getByIdFromDB,
-    updateIntoDB
+    updateIntoDB,
+    deleteFromDB,
+    softDeleteFromDB
 }

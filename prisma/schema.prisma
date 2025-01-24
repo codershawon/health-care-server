@@ -44,4 +44,5 @@ enum Role {
 enum UserStatus{
   ACTIVE
   BLOCKED
+  DELETED
 }
