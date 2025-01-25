@@ -1,7 +1,8 @@
-import express, { Application, Request, Response } from "express";
+import express, { Application, NextFunction, Request, Response } from "express";
 import cors from "cors";
-import { userRoutes } from "./app/modules/User/user.routes";
-import { adminRoutes} from "./app/modules/Admin/admin.routes";
+import httpStatus from "http-status";
+import router from "./app/routes";
+import globalErrorHandler from "./app/middlewares/globalErrorHandler";
 const app: Application= express();
 app.use(cors())
 
@@ -15,6 +16,17 @@ app.get("/", (req: Request, res: Response)=>{
     })
 });
 
-app.use("/api/v1/user",userRoutes)
-app.use("/api/v1/admin",adminRoutes)
+app.use("/api/v1", router);
+app.use(globalErrorHandler)
+app.use((req: Request, res: Response,next: NextFunction)=>{
+    console.log(req)
+    res.status(httpStatus.NOT_FOUND).json({
+        success: false,
+        message: "Page not found",
+        error:{
+            path: req.originalUrl,
+            message: "Your requested page does not exist"
+        }
+    })
+})
 export default app;
