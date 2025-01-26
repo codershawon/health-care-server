@@ -1,8 +1,9 @@
 import express from "express";
 import app from "./app";
 import { Server } from "http";
+import config from "./config";
 
-const port = 3000;
+const port = config.port;
 
 
 async function main() {
