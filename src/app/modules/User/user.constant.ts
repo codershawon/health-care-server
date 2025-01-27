@@ -1,0 +1,2 @@
+export const userSearchableFields: string[] = ['email'] //only for searchable fields
+export const userFilterableFields: string[] = ['name', 'role', 'status', 'searchTerm','email'] //for all filter fields
